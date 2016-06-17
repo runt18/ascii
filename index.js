@@ -1,29 +1,35 @@
 const _ = require('lodash');
-
-const CHAR_SIZE = 5;
-const SPACE_SIZE = 3;
 const CHARS = require('./chars');
 
-const outputRows = _.times(CHAR_SIZE, _.constant(''));
+const CHAR_HEIGHT = 5;
+const SPACE_SIZE = 3;
 
-const input = 'abc abc';
+const outputRows = _.times(CHAR_HEIGHT, _.constant(''));
+
+const input = 'dead beef gad';
 const spaceChar = ' ';
-const fillChar = 'X';
+const fillChar = '#';
 
 const format = (char) =>
-  char.replace(/O/g, spaceChar).replace(/X/g, fillChar) + spaceChar;
+  char.replace(/ /g, spaceChar).replace(/#/g, fillChar) + spaceChar;
+
+const fillRow = (callback) => {
+  _.times(CHAR_HEIGHT, (index) => {
+    outputRows[index] += callback(index);
+  });
+};
+
+const makeString = (n, char) => _.times(n, _.constant(char)).join('');
 
 _.each(input, (char) => {
-  if (CHARS[char]) {
-    _.times(CHAR_SIZE, (index) => {
-      outputRows[index] += CHARS[char][index] + spaceChar;
-    });
-  }
+  char = char.toLowerCase();
+  const data = CHARS[char];
 
-  if (char === ' ') {
-    _.times(CHAR_SIZE, (index) => {
-      outputRows[index] += _.times(SPACE_SIZE, _.constant(spaceChar)).join('');
-    });
+  if (data) {
+    fillRow((index) => data[index] + spaceChar);
+  }
+  else if (char === ' ') {
+    fillRow((index) => makeString(SPACE_SIZE, spaceChar));
   }
 });
 
