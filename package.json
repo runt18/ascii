@@ -1,6 +1,6 @@
 {
   "name": "ascii-me",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ascii text",
   "main": "index.js",
   "scripts": {
