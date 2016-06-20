@@ -4,7 +4,10 @@ const CHARS = require('./chars');
 const CHAR_HEIGHT = 5;
 const SPACE_SIZE = 3;
 
-module.exports = (input, fillChar = '#', spaceChar = ' ') => {
+module.exports = (input, fillChar, spaceChar) => {
+    fillChar = fillChar || '#';
+    spaceChar = spaceChar || ' ';
+
     const outputRows = _.times(CHAR_HEIGHT, _.constant(''));
 
     const format = (char) =>
@@ -17,7 +20,7 @@ module.exports = (input, fillChar = '#', spaceChar = ' ') => {
     };
 
     _.each(input, (char) => {
-        char = char.toLowerCase();
+        char = _.toLower(char);
         const data = CHARS[char];
 
         if (data) {

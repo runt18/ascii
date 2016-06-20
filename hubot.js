@@ -3,7 +3,7 @@ const ascii = require('./index');
 
 module.exports = robot => {
     robot.respond(/ascii me\s(\S+)(\s(\S+))?(\s(.+))?/i, response => {
-        const {match} = response;
+        const match = response.match;
 
         if (!match[1]) {
             response.send('I need something to asciify');
