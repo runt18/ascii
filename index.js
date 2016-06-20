@@ -33,7 +33,7 @@ module.exports = (input, fillChar, spaceChar) => {
 
     return '\n' + format(
         outputRows
-            .map((r) => r.substring(0, r.length - 1))
+            .map((r) => r.substring(0, r.length - spaceChar.length))
             .join('\n')
     );
 };
