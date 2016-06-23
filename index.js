@@ -25,8 +25,7 @@ module.exports = (input, fillChar, spaceChar) => {
 
         if (data) {
             fillRow((index) => data[index] + spaceChar);
-        }
-        else if (char === ' ') {
+        } else if (char === ' ') {
             fillRow((index) => _.repeat(spaceChar, SPACE_SIZE));
         }
     });
