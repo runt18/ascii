@@ -9,6 +9,7 @@
   "author": "Giles Lavelle",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "minimist": "^1.2.0"
   }
 }
