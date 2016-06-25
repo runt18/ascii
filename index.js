@@ -1,17 +1,17 @@
 const _ = require('lodash');
 const CHARS = require('./chars');
 
-const CHAR_HEIGHT = 5;
+const CHAR_HEIGHT = CHARS.a.length;
 const SPACE_SIZE = 3;
 
-module.exports = (input, fillChar, spaceChar) => {
-    fillChar = fillChar || '#';
+module.exports = (input, fillChars, spaceChar) => {
+    fillChars = fillChars || ['#'];
     spaceChar = spaceChar || ' ';
 
     const outputRows = _.times(CHAR_HEIGHT, _.constant(''));
 
     const format = (char) =>
-      char.replace(/ /g, spaceChar).replace(/#/g, fillChar);
+      char.replace(/ /g, spaceChar).replace(/#/g, () => _.sample(fillChars));
 
     const fillRow = (callback) => {
         _.times(CHAR_HEIGHT, (index) => {

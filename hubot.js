@@ -13,6 +13,6 @@ module.exports = robot => {
         const fillChar = match[2] ? _.trim(match[2]) : ':fire:';
         const spaceChar = ':spacergif:';
 
-        response.send('\n' + ascii(match[1], fillChar, spaceChar));
+        response.send('\n' + ascii(match[1], [fillChar], spaceChar));
     });
 };
